@@ -1,21 +1,20 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <iomanip>
+
 
 const int lenth = 14;
 const std::string error_open = ", not open";
 
 
-bool isLetter(char*& string);
 bool isNumber(char*& string);
 bool isId(char*& string);
-bool isCalc(char*& string);
 bool isMultiDivide(char*& string);
 bool isPlusMinus(char*& string);
 bool isUnsignedInt(char*& string);
 bool isMultiplier(char*& string);
 bool isTerm(char*& string);
-bool isFormula(char*& string)
+bool isFormula(char*& string);
 int main()
 {
 	int i = 1;
@@ -26,22 +25,24 @@ int main()
 		std::cout << " Enter file to read: ";
 		std::cin >> inFileName;
 		in.open(inFileName);
+		
 		if (!in)
 		{
 			throw inFileName + error_open;
 		}
-		std::cout << "	Recursion\n Is the number real:\n";
+		std::cout << "	Recursion\n Is Formula: \n";
 		while (!in.eof())
 		{
 			char* string;
 			string = new char[lenth];
 			in.getline(string, lenth, '\n');
-			char* buf = string;
-			std::cout.width(3);
-			std::cout << i << ") ";
-			std::cout.width(13);
-			std::cout << string;
-			if (isFormula(buf))
+			if (in.eof())
+			{
+				std::cout << "The end of the file has been reached\n";
+				delete[] string;
+				break;
+			}
+			if (isFormula(string))
 			{
 				std::cout << "  True\n";
 			}
@@ -50,7 +51,6 @@ int main()
 				std::cout << " False\n";
 			}
 			i++;
-			delete[] string;
 		}
 	}
 	catch (const std::string& error)
@@ -59,52 +59,13 @@ int main()
 		return -1;
 	}
 	in.close();
-	
+
 	return 0;
 
 }
-
-bool isLetter(char*& string)
-{
-	if (*string == 'a' || *string == 'b' || *string == 'c' || *string == 'd' || *string == 'e')
-	{
-		string++;
-		return true;
-	}
-	return false;
-}
-
 bool isId(char*& string)
 {
-	if (isLetter(string))
-	{
-		return true;
-	}
-	return false;
-}
-
-bool isCalc(char*& string)
-{
-	if (*string == '*' || *string == '/' || *string == '+' || *string == '-' || *string == '\0')
-	{
-		string++;
-		return true;
-	}
-	return false;
-}
-bool isMultiDivide(char*& string)
-{
-	if (*string == '*' || *string == '/')
-	{
-		string++;
-		return true;
-	}
-	return false;
-}
-
-bool isPlusMinus(char*& string)
-{
-	if (*string == '+' || *string == '-')
+	if (*string >= 'a' && *string <= 'e')
 	{
 		string++;
 		return true;
@@ -126,11 +87,11 @@ bool isUnsignedInt(char*& string)
 {
 	if (isNumber(string))
 	{
-		if (isCalc(string))
+		if (*string == '*' || *string == '/' || *string == '\0')
 		{
 			return true;
 		}
-		return isUnsignedInt(string)
+		return isUnsignedInt(string);
 	}
 	return false;
 }
@@ -144,15 +105,35 @@ bool isMultiplier(char*& string)
 	return false;
 }
 
+bool isMultiDivide(char*& string)
+{
+	if (*string == '*' || *string == '/')
+	{
+		string++;
+		return true;
+	}
+	return false;
+}
+
+bool isPlusMinus(char*& string)
+{
+	if (*string == '+' || *string == '-')
+	{
+		string++;
+		return true;
+	}
+	return false;
+}
+
 bool isTerm(char*& string)
 {
 	if (isMultiplier(string))
 	{
-		if (isMultiDivide(string))
+		if (*string == '+' || *string == '-' || *string == '\0')
 		{
 			return true;
 		}
-		return isTerm;
+		return isMultiDivide(string) && isTerm(string);
 	}
 	return false;
 }
@@ -161,14 +142,15 @@ bool isFormula(char*& string)
 {
 	if (isTerm(string))
 	{
-		if (isPlusMinus(string))
+		if (*string == '\0')
 		{
 			return true;
 		}
-		return isFormula;
+		return isPlusMinus(string) && isFormula(string);
 	}
-	return False
+	return false;
 }
+
 
 
 
