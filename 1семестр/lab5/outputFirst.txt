@@ -1,0 +1,72 @@
+-----------------
+-O0
+sum = 2.04082e+61
+
+real	0m33,063s
+user	0m33,020s
+sys	0m0,016s
+20K	test0
+-----------------
+-Os
+sum = 2.04082e+61
+
+real	0m18,901s
+user	0m18,885s
+sys	0m0,001s
+20K	tests
+-----------------
+-O1
+sum = 2.04082e+61
+
+real	0m14,075s
+user	0m14,063s
+sys	0m0,000s
+20K	test1
+-----------------
+-O2
+sum = 2.04082e+61
+
+real	0m13,119s
+user	0m13,104s
+sys	0m0,005s
+20K	test2
+-----------------
+-O3
+sum = 2.04082e+61
+
+real	0m10,920s
+user	0m10,905s
+sys	0m0,005s
+20K	test3
+-----------------
+-O2 -march=native
+sum = 2.04082e+61
+
+real	0m12,824s
+user	0m12,815s
+sys	0m0,001s
+20K	test2mn
+-----------------
+-O3 -march=native
+sum = 2.04082e+61
+
+real	0m10,432s +++++
+user	0m10,425s
+sys	0m0,001s
+20K	test3mn
+-----------------
+-O2 -march=native -funroll-loops
+sum = 2.04082e+61
+
+real	0m11,869s
+user	0m11,856s
+sys	0m0,005s
+20K	test2mnfl
+-----------------
+-O3 -march=native -funroll-loops
+sum = 2.04082e+61
+
+real	0m11,874s
+user	0m11,863s
+sys	0m0,001s
+20K	test3mnfl

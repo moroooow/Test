@@ -1,0 +1,67 @@
+--------------
+-O3 -march=native  -fipa-profile -flto
+sum = 2.04082e+61
+
+real	0m10,433s
+user	0m10,425s
+sys	0m0,000s
+20K	test1
+--------------
+-O3 -march=native  -fipa-pure-const -flto
+sum = 2.04082e+61
+
+real	0m10,438s
+user	0m10,429s
+sys	0m0,000s
+20K	test2
+--------------
+-O3 -march=native  -fipa-reference -flto
+sum = 2.04082e+61
+
+real	0m10,434s
+user	0m10,425s
+sys	0m0,001s
+20K	test3
+--------------
+-O3 -march=native  -fipa-reference-addressable -flto
+sum = 2.04082e+61
+
+real	0m10,431s
+user	0m10,424s
+sys	0m0,001s
+20K	test4
+--------------
+-O3 -march=native  -fprofile-generate
+sum = 2.04082e+61
+libgcov profiling error:/home/anatoliy/СПО/lab/lab5/hello.gcda:overwriting an existing profile data with a different timestamp
+
+real	0m12,641s
+user	0m12,631s
+sys	0m0,000s
+28K	test5
+--------------
+-O3 -march=native  -fprofile-use
+sum = 2.04082e+61
+
+real	0m11,780s
+user	0m11,769s
+sys	0m0,000s
+20K	test5
+--------------
+-O3 -march=native  -fipa-profile -flto -fprofile-generate
+sum = 2.04082e+61
+libgcov profiling error:/home/anatoliy/СПО/lab/lab5/hello.gcda:overwriting an existing profile data with a different timestamp
+
+real	0m12,730s
+user	0m12,716s
+sys	0m0,004s
+28K	test6
+--------------
+-O3 -march=native  -fipa-profile -flto -fprofile-use
+sum = 2.04082e+61
+
+real	0m9,524s +++++++++++++++++
+user	0m9,518s
+sys	0m0,000s
+20K	test6
+

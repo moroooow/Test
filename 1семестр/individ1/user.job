@@ -1,0 +1,1 @@
+find . -type f -name "*.txt" -exec grep -Po "(?<=[\:|\t|\s|\(|^])?[a-zA-Z]([a-zA-Z0-9]+)?((\-|\.)[a-zA-Z0-9]+){0,}\@[a-zA-Z0-9]+((\.|\-)[a-zA-Z0-9]+){0,}\.[a-zA-Z0-9]+(?=[\:|\t|\s|\)|\$)])?" {} \; | tr [:upper:] [:lower:] | sort -ui > base.txt

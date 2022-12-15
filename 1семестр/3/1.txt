@@ -1,0 +1,7 @@
+abcdefg
+a b c    d      e   f   g
+abb
+abbbccaaaa
+cde
+e f
+e

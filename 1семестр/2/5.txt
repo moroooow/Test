@@ -1,0 +1,10 @@
+5
+cat
+cat@yandex.ru
+cat@yandex.ru
+cat@yandex.ru
+dog@mail.ru
+owl.yandex.ru
+dog
+owl@mymail.ru
+owl.yandex@ru

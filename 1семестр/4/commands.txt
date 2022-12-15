@@ -1,0 +1,6 @@
+-grep -E "a" example.txt | tac
+-комманда ls задана с несуществующим ключом -y, весь вывод записывается в конец logfile, все ошибки перенаправляются туда же
+-script.sh
+-ls example.txt file2 2> logfileT.txt; cat -n logfileT.txt > logfile2.txt; rm logfileT.txt не понял как одновременно перенаправлять и пронумеровывать
+
+

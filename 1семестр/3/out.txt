@@ -1,0 +1,12 @@
+aaaa
+abb
+abbbcc
+a b c    
+abcdefg
+cde
+d      
+e
+e   
+e f
+f   
+g
